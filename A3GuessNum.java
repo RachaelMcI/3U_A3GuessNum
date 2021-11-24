@@ -6,7 +6,7 @@
 
 import java.util.*;
 
-public A3GuessNum{
+public class A3GuessNum{
   
   
   //main method
@@ -16,39 +16,75 @@ public A3GuessNum{
     Random numGenerator = new Random();
     
     // Generate a random number from 0-5.
-    int answer = numGenerator.nextInt(6);
-    int guess = -1; // default guess num.
-    
-    System.out.println("Guess a number");
-    int guess = input.nextInt();  
-    
-      
+    int answer = numGenerator.nextInt(200) + 1;
+    int guess = 0; // default guess num.
+    int counter = 0;
+    // main code
+    System.out.println("Would you like to play again? Yes/No");
+    String playAgain = input.next();
+    if (playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y")){ // could be in the wrong area, or changed into a while    loop
+      System.out.println("Guess a number.");
+     while(guess != answer && counter <= 4 ){ //while as a specific condition ends it
+       guess = input.nextInt();  
+       counter++;
+       
+          //hints that can be moved into a method
+         if(guess >= answer+55 || guess<= answer-55){ // is there a more effective way of doing this
+           System.out.println("Hint: You're freezing!");
+           System.out.println("Attempts:" + counter);
+             }
+            else if(guess>=answer+25 ||guess<=answer-25){
+              System.out.println("Hint: You're cold.");
+              System.out.println("Attempts:" + counter);
+               }
+           else if(guess>=answer+5 || guess <= answer-5){ // should be 10 from the answer --> answer-10
+               System.out.println("Hint: you're warm.");
+               System.out.println("Attempts:" + counter);
+               }
+            else if(guess>=answer+5 || guess <= answer-5){ // should be 10 from the answer        --> answer+5
+                System.out.println("Hint: Hot, hot, hot!");
+                System.out.println("Attempts:" + counter);
+             }
+      }
+      //ENDWHILE
+           if(counter==5){ //maybe change to attemptCount(er)
+            System.out.println("Congratulations!");
+            //you guessed in ___ tries
+           }
+            else{ //could make a seperate string method for confetti
+             System.out.println("No Tries left. You lose, sorry!");
+            }
+      }
+      else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+          System.out.println("bye.");
+         }
+      else{
+        System.out.println("Invalid Input");
+      }
   }// close main
 }
-/*import java.util.*;
-
-public class Main {
+/*public class Main {
 
     public static void main(String[] args) {
-        // create a scanner and random object
-        Scanner input = new Scanner(System.in);
-        Random randomNumGenerator = new Random();
+        // how to create a scanner
+     Scanner input = new Scanner(System.in);   
+     //random object creator 
+     Random randomNumGenerator = new Random();
+     //set between 1 & 20
+    int randomNum = randomNumGenerator.nextInt(20) + 1;
+    int guessNum = 0;
+    
+    while(guessNum != randomNum){
+        System.out.println(guessNum);
+        System.out.println("Guess a number");
+        guessNum = input.nextInt();
 
-        // create a random number between 1 and 20.
-        int randomNum = 
-        int dieRoll = 0;
-
-        
-        // replace the 1 with the random number
-        while(dieRoll!=1){
-            System.out.println(dieRoll);
-            System.out.println("Guess a number");
-            dieRoll = input.nextInt();
-            // dieRoll = randomNumGenerator.nextInt(20)+1;
         }
-
-        
     }
-
 }
 */
+
+// remember to include to display counter of how many tries are left
+// remember to include a check for any incorrect inputs, should have something on chromebook.
+//could add a keep playing? / forefiet? 
+//arra
