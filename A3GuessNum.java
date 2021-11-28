@@ -20,16 +20,15 @@ public class A3GuessNum{
     int guess = 0; // default guess num.
     int counter = 0;
     // main code
-    System.out.println("Would you like to play again? Yes/No");
+    System.out.println("Would you like to play? Yes/No");
     String playAgain = input.next();
     if (playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y")){ // could be in the wrong area, or changed into a while    loop
       System.out.println("Guess a number.");
-     while(guess != answer && counter <= 4 ){ //while as a specific condition ends it
-       guess = input.nextInt();  
+     
+     while(guess != answer && counter <= 4D && input.hasNextInt()){ //while as a specific condition ends it
+       guess = input.nextInt(); 
        counter++;
-       
-          //hints that can be moved into a method
-         if(guess >= answer+55 || guess<= answer-55){ // is there a more effective way of doing this
+       if(guess >= answer+55 || guess<= answer-55){ // is there a more effective way of doing this
            System.out.println("Hint: You're freezing!");
            System.out.println("Attempts:" + counter);
              }
@@ -45,22 +44,26 @@ public class A3GuessNum{
                 System.out.println("Hint: Hot, hot, hot!");
                 System.out.println("Attempts:" + counter);
              }
+
+          }
       }
       //ENDWHILE
-           if(counter==5){ //maybe change to attemptCount(er)
+          if(guess == answer){ //maybe change to attemptCount(er)
             System.out.println("Congratulations!");
             //you guessed in ___ tries
            }
-            else{ //could make a seperate string method for confetti
-             System.out.println("No Tries left. You lose, sorry!");
-            }
-      }
-      else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+          else if(counter > 5){
+            System.out.println("No Tries left. You lose, sorry!");
+          }
+           else{ //could make a seperate string method for confetti
+             System.out.println("Input Error!");
+            } 
+       else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
           System.out.println("bye.");
          }
-      else{
+       else{
         System.out.println("Invalid Input");
-      }
+        }
   }// close main
 }
 /*public class Main {
@@ -88,3 +91,10 @@ public class A3GuessNum{
 // remember to include a check for any incorrect inputs, should have something on chromebook.
 //could add a keep playing? / forefiet? 
 //arra
+
+/* can restore to yesterday, would need to change while statement & comment out array  else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+          System.out.println("bye.");
+         }
+       else{
+        System.out.println("Invalid Input");
+        } */
