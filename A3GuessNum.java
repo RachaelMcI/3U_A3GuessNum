@@ -91,6 +91,7 @@ public class A3GuessNum{
 // remember to include a check for any incorrect inputs, should have something on chromebook.
 //could add a keep playing? / forefiet? 
 //arra
+//clean up comments down the line
 
 }
 /*public class Main {
