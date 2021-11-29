@@ -54,25 +54,35 @@ public class A3GuessNum{
             input.next();
             //you guessed in ___ tries
           }
-          else if(counter >= 5){
+          else if(counter > 5){
             System.out.println("No Tries left. You lose, sorry!");
             System.out.println("Would you like to play again? Yes/No");
-            input.next();
+            playAgain.next();
+            if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")||input.hasNextInt()){
+             inputValid = false;
+             System.out.println("Bye");
           }
            else{ //could make a seperate string method for confetti
              System.out.println("Input Error!");
              System.out.println("Would you like to play again? Yes/No");
-             input.next();
+             playAgain.next();
+             if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")||input.hasNextInt()){
+               inputValid = false;
+               System.out.println("Bye");
+             }
+             else{
+               inputValid = true;
+             }
             } 
   
       }
        if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
           System.out.println("bye.");
-           inputValid = true;
+           inputValid = false;
          }
       else{
         System.out.println("Invalid Input");
-            inputValid = false;
+           inputValid = false;
       }
   }// close main
 }
