@@ -14,16 +14,17 @@ public class A3GuessNum{
     // Make a scanner and Random Object.
     Scanner input = new Scanner(System.in);
     Random numGenerator = new Random();
-    
+    boolean inputValid = true;
+    System.out.println("Would you like to play? Yes/No");
+    String playAgain = input.next();
+    while(playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y") && inputValid == true){
     // Generate a random number from 0-5.
     int answer = numGenerator.nextInt(200) + 1;
     int guess = 0; // default guess num.
     int counter = 0;
     // main code
-    System.out.println("Would you like to play again? Yes/No");
-    String playAgain = input.next();
-    if (playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y")){ // could be in the wrong area, or changed into a while    loop
-      System.out.println("Guess a number.");
+     // could be in the wrong area, or changed into a while    loop
+      System.out.println("Guess a number between 1 and 200.");
      while(guess != answer && counter <= 4 && input.hasNextInt()){ //while as a specific condition ends it
        guess = input.nextInt();  
        counter++;
@@ -47,22 +48,31 @@ public class A3GuessNum{
              }
       }
       //ENDWHILE
-           if(guess == answer){ //maybe change to attemptCount(er)
+         if(guess == answer){ //maybe change to attemptCount(er)
             System.out.println("Congratulations!");
+            System.out.println("Would you like to play again? Yes/No");
+            input.next();
             //you guessed in ___ tries
-           }
-          else if(counter > 5){
+          }
+          else if(counter >= 5){
             System.out.println("No Tries left. You lose, sorry!");
+            System.out.println("Would you like to play again? Yes/No");
+            input.next();
           }
            else{ //could make a seperate string method for confetti
              System.out.println("Input Error!");
+             System.out.println("Would you like to play again? Yes/No");
+             input.next();
             } 
+  
       }
-      else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+       if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
           System.out.println("bye.");
+           inputValid = true;
          }
       else{
         System.out.println("Invalid Input");
+            inputValid = false;
       }
   }// close main
 }
@@ -91,9 +101,8 @@ public class A3GuessNum{
 // remember to include a check for any incorrect inputs, should have something on chromebook.
 //could add a keep playing? / forefiet? 
 //arra
-//clean up comments down the line
 
-}
+//}
 /*public class Main {
 
     public static void main(String[] args) {
