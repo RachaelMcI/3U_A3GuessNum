@@ -38,6 +38,7 @@ public class A3GuessNum{
     boolean inputValid = true;
     System.out.println("Would you like to play? Yes/No");
     //String playAgain = input.nextln();
+    input.next();
     while(input.equals("yes")||input.equals("Yes")||input.equals("y") && inputValid == true){
     // Generate a random number from 0-5.
       int answer = numGenerator.nextInt(200) + 1;
@@ -97,6 +98,7 @@ public class A3GuessNum{
                inputValid = false;
                }
             } 
+       }
        if(input.equals("no")||input.equals("No")||input.equals("n")){
           System.out.println("bye.");
            inputValid = false;
@@ -105,7 +107,7 @@ public class A3GuessNum{
         System.out.println("Invalid Input");
            inputValid = false;
        }
-     }// close main
+   // close main
 }
 }
 /*public class Main {
