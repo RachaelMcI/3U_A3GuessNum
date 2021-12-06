@@ -14,22 +14,24 @@ public class A3GuessNum{
     // Make a scanner and Random Object.
     Scanner input = new Scanner(System.in);
     Random numGenerator = new Random();
-    
+    boolean inputValid = true;
+
+    System.out.println("Would you like to play? Yes/No");
+    input.next();
+    //String playAgain = input.next();
+    while(input.equals("yes")||input.equals("Yes")||input.equals("y") && inputValid == true){
     // Generate a random number from 0-5.
     int answer = numGenerator.nextInt(200) + 1;
     int guess = 0; // default guess num.
-    int counter = 0; //keeps track of guesses
+    int counter = 0;
     // main code
-    System.out.println("Would you like to play? Yes/No");
-    String playAgain = input.next();
-    if (playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y")){ // could in a loop, see "working towards challenge 3 " commit.
-      System.out.println("Guess a number.");
-     while(guess != answer && counter <= 4 && input.hasNextInt()){ //while as a specific condition ends it
+      System.out.println("Guess a number between 1 and 200.");
+     while(guess != answer && counter <= 4 && input.hasNextInt()){ //guess a number called input, that checks it is an int
        guess = input.nextInt();  
        counter++;
        
           //hints that can be moved into a method
-         if(guess >= answer+55 || guess<= answer-55){ 
+         if(guess >= answer+55 || guess<= answer-55){ // is there a more effective way of doing this
            System.out.println("Hint: You're freezing!");
            System.out.println("Attempts:" + counter);
              }
@@ -37,36 +39,115 @@ public class A3GuessNum{
               System.out.println("Hint: You're cold.");
               System.out.println("Attempts:" + counter);
                }
-           else if(guess>=answer+10 || guess <= answer-10){ 
+           else if(guess>=answer+10 || guess <= answer-10){ // should be 10 from the answer --> answer-10
                System.out.println("Hint: you're warm.");
                System.out.println("Attempts:" + counter);
                }
-            else if(guess>=answer+5 || guess <= answer-5){ // a range from the answer
+            else if(guess>=answer+5 || guess <= answer-5){ // should be 10 from the answer        --> answer+5
                 System.out.println("Hint: Hot, hot, hot!");
                 System.out.println("Attempts:" + counter);
              }
       }
       //ENDWHILE
-           if(guess == answer){ 
+         if(guess == answer){ //maybe change to attemptCount(er)
             System.out.println("Congratulations!");
-            //can add confettii in the future
-           }
+            System.out.println("Would you like to play again? Yes/No");
+            input.next();
+            if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
+               inputValid = false;
+               System.out.println("Bye");
+            //you guessed in ___ tries
+            }
+          }
           else if(counter > 5){
             System.out.println("No Tries left. You lose, sorry!");
+            System.out.println("Would you like to play again? Yes/No");
+            input.next();
+            if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
+             inputValid = false;
+             System.out.println("Bye");
           }
-           else{ 
+           else{ //could make a seperate string method for confetti
              System.out.println("Input Error!");
+             System.out.println("Would you like to play again? Yes/No");
+             input.next();
+             if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
+               inputValid = false;
+               System.out.println("Bye");
+             }
+             else{
+               inputValid = true;
+             }
             } 
+  
       }
-      else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+       if(input.equals("no")||input.equals("No")||input.equals("n")){
           System.out.println("bye.");
+           inputValid = false;
          }
       else{
         System.out.println("Invalid Input");
+           inputValid = false;
       }
-  }// close main
+    }// close main
+ }
 }
+/*public class Main {
 
+    public static void main(String[] args) {
+        // how to create a scanner
+     Scanner input = new Scanner(System.in);   
+     //random object creator 
+     Random randomNumGenerator = new Random();
+     //set between 1 & 20
+    int randomNum = randomNumGenerator.nextInt(20) + 1;
+    int guessNum = 0;
+    
+    while(guessNum != randomNum){
+        System.out.println(guessNum);
+        System.out.println("Guess a number");
+        guessNum = input.nextInt();
 
-// optional:expand on the strings & use playAgain.next(); more 
-//could add a keep playing / forefiet 
+        }
+    }
+}
+*/
+
+// remember to include to display counter of how many tries are left
+// remember to include a check for any incorrect inputs, should have something on chromebook.
+//could add a keep playing? / forefiet? 
+//arra
+
+//}
+/*public class Main {
+
+    public static void main(String[] args) {
+        // how to create a scanner
+     Scanner input = new Scanner(System.in);   
+     //random object creator 
+     Random randomNumGenerator = new Random();
+     //set between 1 & 20
+    int randomNum = randomNumGenerator.nextInt(20) + 1;
+    int guessNum = 0;
+    
+    while(guessNum != randomNum){
+        System.out.println(guessNum);
+        System.out.println("Guess a number");
+        guessNum = input.nextInt();
+
+        }
+    }
+}
+*/
+
+// remember to include to display counter of how many tries are left
+// remember to include a check for any incorrect inputs, should have something on chromebook.
+//could add a keep playing? / forefiet? 
+//arra
+
+/* can restore to yesterday, would need to change while statement & comment out array  else if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")){
+          System.out.println("bye.");
+         }
+       else{
+        System.out.println("Invalid Input");
+        } */
