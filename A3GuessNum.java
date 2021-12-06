@@ -37,9 +37,8 @@ public class A3GuessNum{
     Random numGenerator = new Random();
     boolean inputValid = true;
     System.out.println("Would you like to play? Yes/No");
-    //String playAgain = input.nextln();
-    input.next();
-    while(input.equals("yes")||input.equals("Yes")||input.equals("y") && inputValid == true){
+    String playAgain = input.next();
+      while(playAgain.equals("yes")||playAgain.equals("Yes")||playAgain.equals("y") && inputValid == true){
     // Generate a random number from 0-5.
       int answer = numGenerator.nextInt(200) + 1;
       int guess = 0; // default guess num.
@@ -73,9 +72,33 @@ public class A3GuessNum{
             System.out.println("Congratulations!");
             System.out.println("Would you like to play again? Yes/No");
             input.next();
+             if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
+             inputValid = false;
+             System.out.println("Bye");
+            } 
+              else{
+               inputValid = true;
+                System.out.println("Guess a number");
+
+               }
+
             //you guessed in ___ tries
           }
-          else if(counter >= 6){
+           else if (input.hasNextString()){
+             System.out.println("Input Error!");
+             System.out.println("Would you like to play again? Yes/No");
+             playAgain.next();
+               if(playAgain.equals("no")||playAgain.equals("No")||playAgain.equals("n")||input.hasNextInt()){
+               inputValid = false;
+               System.out.println("Bye");
+               }
+               else{
+               inputValid = true;
+                System.out.println("Guess a number");
+
+               }
+            }
+            else {
             System.out.println("No Tries left. You lose, sorry!");
             System.out.println("Would you like to play again? Yes/No");
             input.next();
@@ -83,23 +106,10 @@ public class A3GuessNum{
             if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
              inputValid = false;
              System.out.println("Bye");
-            }
-          }
-           else{ //could make a seperate string method for confetti
-             System.out.println("Input Error!");
-             System.out.println("Would you like to play again? Yes/No");
-             System.out.println("guess a number");
-             input.next();
-               if(input.equals("no")||input.equals("No")||input.equals("n")||input.hasNextInt()){
-               inputValid = false;
-               System.out.println("Bye");
-               }
-               else{
-               inputValid = false;
-               }
             } 
+          }
        }
-       if(input.equals("no")||input.equals("No")||input.equals("n")){
+       if(playAgain.equals("no")||input.equals("No")||input.equals("n")){
           System.out.println("bye.");
            inputValid = false;
          }
